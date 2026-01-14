@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natalie Gil | Leading with AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            padding: 80px 40px 60px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: #000;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            font-weight: 400;
+            margin-top: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .date-badge {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background: #000;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 0.95em;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .content {
+            padding: 60px 40px;
+        }
+
+        .speaker-section {
+            margin-bottom: 80px;
+        }
+
+        .speaker-section h2 {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        .speaker-intro {
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .speaker-name {
+            font-size: 2.5em;
+            color: #000;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .speaker-title {
+            font-size: 1.2em;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .speaker-bio {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+            max-width: 800px;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .credential-badge {
+            background: #f5f5f5;
+            color: #333;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid #e5e5e5;
+            transition: all 0.2s ease;
+        }
+
+        .credential-badge:hover {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        .topics-section {
+            margin-bottom: 80px;
+        }
+
+        .topics-section h2 {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        .intro-text {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .topics-list {
+            list-style: none;
+            max-width: 800px;
+        }
+
+        .topics-list li {
+            padding: 24px 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 1.15em;
+            color: #1a1a1a;
+            transition: all 0.2s ease;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .topics-list li:hover {
+            padding-left: 20px;
+            color: #000;
+        }
+
+        .topics-list li::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #000;
+            border-radius: 50%;
+            margin-right: 20px;
+            vertical-align: middle;
+        }
+
+        .session-format {
+            background: #fafafa;
+            padding: 50px;
+            border-radius: 0;
+            margin-top: 60px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .session-format h3 {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        .session-format p {
+            font-size: 1.05em;
+            color: #444;
+            line-height: 2;
+        }
+
+        .personal-touch {
+            background: #fafafa;
+            padding: 40px;
+            border-radius: 0;
+            border-left: 3px solid #000;
+            margin-top: 50px;
+            font-style: italic;
+            color: #444;
+            line-height: 1.9;
+            font-size: 1.15em;
+            max-width: 800px;
+        }
+
+        .personal-touch .attribution {
+            margin-top: 20px;
+            text-align: right;
+            font-weight: 500;
+            color: #000;
+            font-style: normal;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 80px 40px;
+            background: #000;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .cta h3 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .cta p {
+            font-size: 1.2em;
+            color: #ccc;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 50px 20px 40px;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+
+            .content {
+                padding: 40px 20px;
+            }
+
+            .speaker-name {
+                font-size: 2em;
+            }
+
+            .topics-list li {
+                font-size: 1.05em;
+            }
+
+            .session-format {
+                padding: 30px 20px;
+            }
+
+            .personal-touch {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Leading with AI</h1>
+            <div class="subtitle">Navigating the Future of Work and Leadership</div>
+            <div class="date-badge">February 2026</div>
+        </div>
+
+        <div class="content">
+            <div class="speaker-section">
+                <h2>Featured Speaker</h2>
+                <div class="speaker-intro">
+                    <div class="speaker-name">Natalie Gil</div>
+                    <div class="speaker-title">Global Technology Executive | Co-founder & CTO of Darshana</div>
+                    <div class="speaker-bio">
+                        Next month, we welcome Natalie Gil, a global technology executive and co-founder/CTO of Darshana,
+                        a platform redefining digital identities and employability through trusted data, AI, and verifiable credentials.
+                        An MIT and Carnegie Mellon graduate, Natalie previously led Generative AI and Web3 adoption at AWS and has held
+                        roles at Goldman Sachs, Microsoft, and the Inter-American Development Bank (IDB).
+                    </div>
+                    <div class="credentials">
+                        <span class="credential-badge">TEDx Speaker</span>
+                        <span class="credential-badge">Angel Investor</span>
+                        <span class="credential-badge">MIT Graduate</span>
+                        <span class="credential-badge">Carnegie Mellon</span>
+                        <span class="credential-badge">HITEC Award Winner</span>
+                        <span class="credential-badge">ALPFA Recognized</span>
+                        <span class="credential-badge">Women Tech Founders</span>
+                        <span class="credential-badge">Women Who Code</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topics-section">
+                <h2>What to Expect</h2>
+                <p class="intro-text">
+                    Natalie will share practical insights and personal stories on:
+                </p>
+                <ul class="topics-list">
+                    <li>How AI is reshaping work and leadership</li>
+                    <li>Staying future-ready and building a resilient career</li>
+                    <li>Using AI tools to make better decisions and amplify your impact</li>
+                    <li>Continuous learning and reinvention</li>
+                    <li>Responsible leadership in an AI-driven environment</li>
+                </ul>
+
+                <div class="personal-touch">
+                    "I'll share a few personal stories from my own journey navigating technology adoption and big transitions —
+                    the good, the messy, and what I wish someone had told me earlier."
+                    <div class="attribution">— Natalie Gil</div>
+                </div>
+            </div>
+
+            <div class="session-format">
+                <h3>Session Format</h3>
+                <p>
+                    <strong>Total Duration:</strong> 1 hour<br>
+                    <strong>Introduction:</strong> 5 minutes<br>
+                    <strong>Main Presentation:</strong> 40 minutes<br>
+                    <strong>Q&A Session:</strong> 15 minutes
+                </p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>Join Us for This Engaging Session</h3>
+            <p>A practical and relatable conversation about thriving in an AI-driven world</p>
+        </div>
+    </div>
+</body>
+</html>
