@@ -1,0 +1,19 @@
+.reveal h1, .reveal h2, .reveal h3 {
+    text-transform: none;
+}
+
+.reveal ul, .reveal ol {
+    text-align: left;
+}
+
+.reveal li {
+    margin: 0.5em 0;
+}
+
+.reveal .fragment {
+    opacity: 0.3;
+}
+
+.reveal .fragment.visible {
+    opacity: 1;
+}
