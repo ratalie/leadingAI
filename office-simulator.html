@@ -1051,7 +1051,7 @@
             nearbyCharacter = null;
             characters.forEach(character => {
                 const distance = player.position.distanceTo(character.position);
-                if (distance < 2) {
+                if (distance < 3.5) {
                     nearbyCharacter = character;
                 }
             });
