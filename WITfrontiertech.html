@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRONTIER TECH - WTS 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .slide-1 h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .slide-1 h2 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        .slide-1 p {
+            font-size: 1.8rem;
+        }
+
+        .slide-2 {
+            background: white;
+            flex-direction: column;
+            padding: 80px 100px;
+        }
+
+        .slide-title {
+            font-size: 3rem;
+            color: #764ba2;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .slide-subtitle {
+            font-size: 1.6rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .slide-3 {
+            background: white;
+            flex-direction: column;
+            padding: 80px 100px;
+        }
+
+        .content-box {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 6px solid #667eea;
+        }
+
+        .content-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+
+        .content-text {
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .slide-4 {
+            background: white;
+            flex-direction: column;
+            padding: 80px 100px;
+        }
+
+        .questions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .question-item {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid #667eea;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .slide-5 {
+            background: white;
+            flex-direction: column;
+            padding: 80px 100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        td:first-child {
+            font-weight: 700;
+            color: #764ba2;
+        }
+
+        .slide-6 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-direction: column;
+            padding: 80px 100px;
+            color: white;
+        }
+
+        .results-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .results-list li {
+            font-size: 1.3rem;
+            padding: 18px 25px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            border-left: 5px solid white;
+        }
+
+        .final-box {
+            background: rgba(255,255,255,0.2);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .final-box p {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .nav-buttons {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .counter {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(118, 75, 162, 0.9);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide slide-1 active">
+            <h1>PROPUESTA DE TEMAS</h1>
+            <h2>BLOQUE: FRONTIER TECH</h2>
+            <p>Women in Technology Summit 2026</p>
+        </div>
+
+        <div class="slide slide-2">
+            <h1 class="slide-title">RESUMEN DE LOS 5 TEMAS</h1>
+            <h2 class="slide-subtitle">DESCRIPCIÓN Y SUSTENTO</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-title">Tecnologías de frontera</div>
+                    <div class="card-text">Nueva ola de disrupción científica que transforma industrias, economías y capacidades humanas.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Ciencia e industria</div>
+                    <div class="card-text">Mayor transferencia tecnológica genera valor económico-social.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Brecha de género</div>
+                    <div class="card-text">Mujeres subrepresentadas en investigación avanzada y patentes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Colaboración ecosistema</div>
+                    <div class="card-text">Innovación colaborativa acelera desarrollo y escalabilidad.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Nuevas oportunidades</div>
+                    <div class="card-text">Roles especializados con alto impacto y liderazgo femenino.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-3">
+            <h1 class="slide-title">FRONTIER TECH</h1>
+            <h2 class="slide-subtitle">WOMEN IN TECHNOLOGY SUMMIT 2026</h2>
+            <div class="content-box">
+                <p class="content-text">Posicionar al Summit en la vanguardia del conocimiento, mostrando cómo la presencia femenina en espacios de alto impacto científico y tecnológico no solo es necesaria, sino estratégica.</p>
+            </div>
+            <div class="content-box">
+                <div class="content-label">Ángulo:</div>
+                <p class="content-text">Democratizar el acceso al conocimiento de frontera, posicionando a las mujeres como creadoras, líderes e investigadoras.</p>
+            </div>
+            <div class="content-box">
+                <div class="content-label">Por qué es clave:</div>
+                <p class="content-text">Las tecnologías de frontera (quantum, biotech, space tech, advanced materials) están definiendo el futuro. Sin participación femenina, se pierden perspectivas críticas y competitividad.</p>
+            </div>
+            <div class="content-box">
+                <div class="content-label">Perfiles speakers:</div>
+                <p class="content-text">Investigadora deep tech, Líder innovación industrial, Emprendedora biotech/quantum, Directora transferencia tecnológica</p>
+            </div>
+        </div>
+
+        <div class="slide slide-4">
+            <h1 class="slide-title">PREGUNTAS GUÍA DEL BLOQUE</h1>
+            <h2 class="slide-subtitle">Orientan a speakers y público</h2>
+            <div class="questions-list">
+                <div class="question-item">1️⃣ ¿Qué tecnologías están marcando la verdadera frontera del conocimiento?</div>
+                <div class="question-item">2️⃣ ¿Por qué es clave la participación femenina en espacios científicos de alto impacto?</div>
+                <div class="question-item">3️⃣ ¿Cómo conectar investigación avanzada con necesidades reales de la industria?</div>
+                <div class="question-item">4️⃣ ¿Qué barreras existen para mujeres en deep tech y cómo superarlas?</div>
+                <div class="question-item">5️⃣ ¿Qué habilidades permiten liderar en tecnologías de frontera?</div>
+            </div>
+        </div>
+
+        <div class="slide slide-5">
+            <h1 class="slide-title">PROPUESTA DE CONTENIDO</h1>
+            <h2 class="slide-subtitle">Tipo de contenido (60 minutos)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Objetivo</th>
+                        <th>Impacto esperado</th>
+                        <th>Formato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Keynote de frontera</td>
+                        <td>Abrir con visión científica y futuro</td>
+                        <td>Posicionar el bloque en vanguardia</td>
+                        <td>10 min – Talk</td>
+                    </tr>
+                    <tr>
+                        <td>Panel deep tech</td>
+                        <td>Conectar ciencia, industria y liderazgo</td>
+                        <td>Mostrar aplicaciones reales</td>
+                        <td>25 min – Panel</td>
+                    </tr>
+                    <tr>
+                        <td>Caso breakthrough</td>
+                        <td>Mostrar tecnología en acción</td>
+                        <td>Inspirar con impacto tangible</td>
+                        <td>10 min – Caso/Demo</td>
+                    </tr>
+                    <tr>
+                        <td>Conversación inspiradora</td>
+                        <td>Humanizar el camino en frontier tech</td>
+                        <td>Motivar participación femenina</td>
+                        <td>10 min – Entrevista</td>
+                    </tr>
+                    <tr>
+                        <td>Cierre visionario</td>
+                        <td>Llamado a la acción</td>
+                        <td>Activar vocaciones y liderazgo</td>
+                        <td>5 min – Mensaje</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="slide slide-6">
+            <h1 class="slide-title" style="color: white;">RESULTADO ESPERADO</h1>
+            <p style="font-size: 1.6rem; margin: 20px 0;">Al finalizar, las asistentes:</p>
+            <ul class="results-list">
+                <li>✅ Comprenderán qué tecnologías están definiendo el futuro</li>
+                <li>✅ Se sentirán habilitadas para participar en espacios de alta complejidad científica</li>
+                <li>✅ Identificarán rutas reales hacia carreras en deep tech</li>
+                <li>✅ Reconocerán el valor estratégico de la diversidad en la frontera del conocimiento</li>
+            </ul>
+            <div class="final-box">
+                <p>🚀 Siguiente paso: seleccionar speakers y definir sub-tecnologías prioritarias</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="counter">
+        <span id="current">1</span> / 6
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prev" onclick="move(-1)">← Anterior</button>
+        <button class="nav-btn" id="next" onclick="move(1)">Siguiente →</button>
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+
+        function show(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            if (n >= total) current = total - 1;
+            if (n < 0) current = 0;
+            slides[current].classList.add('active');
+            document.getElementById('current').textContent = current + 1;
+            document.getElementById('prev').disabled = current === 0;
+            document.getElementById('next').disabled = current === total - 1;
+        }
+
+        function move(dir) {
+            current += dir;
+            show(current);
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') move(-1);
+            if (e.key === 'ArrowRight') move(1);
+        });
+
+        show(0);
+    </script>
+</body>
+</html>
